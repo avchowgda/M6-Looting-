@@ -6,18 +6,24 @@
 [ext_resource type="Texture2D" uid="uid://bnem1cahhoxdk" path="res://lessons/chest/top.png" id="4_2au7y"]
 [ext_resource type="Texture2D" uid="uid://bu2jin246nel5" path="res://lessons/chest/lock.png" id="5_relj8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb7wy"]
-shader = ExtResource("2_4q7cj")
-shader_parameter/line_color = Color(1.3957917e-06, 0.64610326, 0.47051388, 1)
-shader_parameter/line_thickness = 19.0
-shader_parameter/viewport_scale = Vector2(1, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv3sb"]
 size = Vector2(97, 78)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb7wy"]
+resource_local_to_scene = true
+shader = ExtResource("2_4q7cj")
+shader_parameter/line_color = Color(1.3957917e-06, 0.64610326, 0.47051388, 1)
+shader_parameter/line_thickness = 4.0
+shader_parameter/viewport_scale = Vector2(1, 1)
 
 [node name="Chest" type="Area2D"]
 position = Vector2(-1, -22)
 script = ExtResource("1_65g6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_bv3sb")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = SubResource("ShaderMaterial_hb7wy")
@@ -34,7 +40,4 @@ texture = ExtResource("4_2au7y")
 position = Vector2(2, 12)
 texture = ExtResource("5_relj8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(1.5, 0)
-shape = SubResource("RectangleShape2D_bv3sb")
+[node name="Camera2D" type="Camera2D" parent="."]
