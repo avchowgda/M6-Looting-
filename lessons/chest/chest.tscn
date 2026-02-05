@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://l0yorxmjaocd"]
+[gd_scene load_steps=14 format=3 uid="uid://l0yorxmjaocd"]
 
 [ext_resource type="Script" uid="uid://ct2mll12nooce" path="res://lessons/chest/chest.gd" id="1_65g6b"]
+[ext_resource type="PackedScene" uid="uid://0i1g0cunmseb" path="res://lessons/items/apple.tscn" id="2_2au7y"]
 [ext_resource type="Shader" uid="uid://lio2wmbue2of" path="res://lessons/chest/group_outline.gdshader" id="2_4q7cj"]
 [ext_resource type="Texture2D" uid="uid://c3hwsm5ugp8qw" path="res://lessons/chest/bottom.png" id="3_1dn1d"]
+[ext_resource type="PackedScene" uid="uid://ctqyr0ufyoktk" path="res://lessons/items/key.tscn" id="3_relj8"]
 [ext_resource type="Texture2D" uid="uid://bnem1cahhoxdk" path="res://lessons/chest/top.png" id="4_2au7y"]
+[ext_resource type="PackedScene" uid="uid://hdxqgspfcaur" path="res://lessons/items/potion.tscn" id="4_hb7wy"]
 [ext_resource type="Texture2D" uid="uid://bu2jin246nel5" path="res://lessons/chest/lock.png" id="5_relj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv3sb"]
@@ -15,21 +18,6 @@ shader = ExtResource("2_4q7cj")
 shader_parameter/line_color = Color(1.3957917e-06, 0.64610326, 0.47051388, 1)
 shader_parameter/line_thickness = 4.0
 shader_parameter/viewport_scale = Vector2(1, 1)
-
-[sub_resource type="Animation" id="Animation_65g6b"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasGroup/Top:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1051448, 0.19941255),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, -9), Vector2(70, -61), Vector2(109, 24)]
-}
 
 [sub_resource type="Animation" id="Animation_4q7cj"]
 length = 0.001
@@ -46,6 +34,21 @@ tracks/0/keys = {
 "values": [Vector2(2, -9)]
 }
 
+[sub_resource type="Animation" id="Animation_65g6b"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1051448, 0.19941255),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, -9), Vector2(70, -61), Vector2(109, 24)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1dn1d"]
 _data = {
 &"RESET": SubResource("Animation_4q7cj"),
@@ -55,6 +58,7 @@ _data = {
 [node name="Chest" type="Area2D"]
 position = Vector2(-1, -22)
 script = ExtResource("1_65g6b")
+possible_items = Array[PackedScene]([ExtResource("2_2au7y"), ExtResource("3_relj8"), ExtResource("4_hb7wy")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
